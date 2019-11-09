@@ -1,6 +1,6 @@
 # How-to
 
-1. Copy the code listed under the vendor you wish to copy your cart from below
+1. Copy the code listed under the vendor you wish to copy your cart from below (triple click)
 2. Navigate to said vendors cart
 3. Press Option + ⌘ + J (on macOS), or Shift + CTRL + J (on Windows/Linux)
 4. Paste the script into the console
