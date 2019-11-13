@@ -25,3 +25,8 @@
 ```
 !function(){!function(e){if(!window.location.href.includes(e.cart)&&window.confirm("You must go to your cart first. After pressing OK, paste the script again."))return void window.location.replace(e.cart);if(!document.querySelectorAll(e.flavor).length)return void alert("You have no flavors in your cart to copy.");(e=>{const o=document.createElement("textarea");o.value=e,document.body.appendChild(o),o.select(),document.execCommand("copy"),document.body.removeChild(o)})("```\n"+Array.from(document.querySelectorAll(e.flavor)).map(e=>e.childNodes[0].textContent.trim()).sort().join("\n").concat("\n```")),alert("flavors have been copied to, go paste them somewhere!")}({cart:"https://riversupplyco.com/cart",flavor:"h5.product-title a"})}();
 ```
+
+### Flavourwala
+```
+!function(){!function(e){if(!window.location.href.includes(e.cart)&&window.confirm("You must go to your cart first. After pressing OK, paste the script again."))return void window.location.replace(e.cart);if(!document.querySelectorAll(e.flavor).length)return void alert("You have no flavors in your cart to copy.");(e=>{const o=document.createElement("textarea");o.value=e,document.body.appendChild(o),o.select(),document.execCommand("copy"),document.body.removeChild(o)})("```\n"+Array.from(document.querySelectorAll(e.flavor)).map(e=>e.childNodes[0].textContent.trim()).sort().join("\n").concat("\n```")),alert("flavors have been copied to, go paste them somewhere!")}({cart:"https://www.flavourwala.com/cart/",flavor:"td.product-name a"})}();
+```
