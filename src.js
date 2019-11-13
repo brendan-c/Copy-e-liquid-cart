@@ -1,21 +1,25 @@
 ;(function() {
     const vendors = {
-      ecigexpress: {
-        cart: 'https://ecigexpress.com/cart',
-        flavor: 'h5.product-name a'
-      },
-      bullcity: {
-        cart: 'https://www.bullcityflavors.com/cart.php',
-        flavor: '.cart-item h4 a'
-      },
-      chefsflavours: {
-        cart: 'https://chefsflavours.co.uk/cart.php',
-        flavor: '.cart-item h4 a'
-      },
-      nicriver: {
-        cart: 'https://riversupplyco.com/cart',
-        flavor: 'h5.product-title a'
-      }
+        ecigexpress: {
+          cart: 'https://ecigexpress.com/cart',
+          flavor: 'h5.product-name a'
+        },
+        bullcity: {
+          cart: 'https://www.bullcityflavors.com/cart.php',
+          flavor: '.cart-item h4 a'
+        },
+        chefsflavours: {
+          cart: 'https://chefsflavours.co.uk/cart.php',
+          flavor: '.cart-item h4 a'
+        },
+        nicriver: {
+          cart: 'https://riversupplyco.com/cart',
+          flavor: 'h5.product-title a'
+        },
+        flavourwala: {
+          cart: 'https://www.flavourwala.com/cart/',
+          flavor: 'td.product-name a'
+        }
     }
   
     function getFlavors(vendor) {
