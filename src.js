@@ -60,6 +60,6 @@
       alert('flavors have been copied to, go paste them somewhere!')
     }
   
-    getFlavors(vendors.bullcity)
+    // getFlavors(vendors.bullcity)
   })()
   
