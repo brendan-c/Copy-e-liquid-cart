@@ -1,4 +1,4 @@
-;(function() {
+exports.init = function() {
   const vendors = {
     ecigexpress: {
       cart: 'https://ecigexpress.com/cart',
@@ -47,4 +47,4 @@
   function closeVendorForm() {
     document.querySelector('.choose-vendor-outer').style = 'display:none;'
   }
-})()
+}
