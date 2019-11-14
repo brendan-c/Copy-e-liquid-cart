@@ -1,0 +1,171 @@
+<style>
+.choose-vendor-outer {
+  display: none;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  max-width: 440px;
+  margin: 0 auto;
+}
+.choose-vendor-inner {
+  max-width: 360px;
+  padding: 4rem 3rem;
+  border-radius: 0.5rem;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.choose-vendor-inner .btn {
+  background: rgba(80, 70, 244, 0.1);
+  border: 1px solid rgba(80, 70, 244, 0.5);
+  border-radius: 3px;
+  height: 35px;
+  padding: 0px 15px;
+}
+
+.choose-vendor-outer .btn:hover {
+  background: rgba(5, 70, 244, 0.2);
+  cursor: pointer;
+}
+.choose-vendor-outer select {
+  height: 35px;
+  padding: 0px 5px;
+}
+
+.choose-vendor-outer select:hover,
+.choose-vendor-outer option:hover {
+  cursor: pointer;
+}
+
+.choose-vendor-inner h3 {
+  text-align: center;
+}
+
+.choose-vendor-inner ul li,
+.choose-vendor-inner ol li {
+  padding: 4px 0;
+}
+
+.choose-vendor-inner .vendor-form {
+  display: block;
+  text-align: center;
+}
+
+.choose-vendor-outer .close {
+  float: right;
+  display: block;
+  margin: 45px 15px 0 0;
+}
+
+.choose-vendor-outer .close:hover {
+  cursor: pointer;
+}
+</style>
+<div class="choose-vendor-outer">
+  <span class="close" onclick="closeVendorForm()">❌</span>
+  <div class="choose-vendor-inner">
+    <label for="vendors">
+      <h3>Looks like you're not on the cart page</h3>
+      <ol>
+        <li>Choose a vendor from below</li>
+        <li>Click 'Go to cart'</li>
+        <ul>
+          <li><i>This will open the cart page in a new tab</i></li>
+        </ul>
+        <li>Run the bookmarklet again in the new tab</li>
+      </ol>
+    </label>
+    <br />
+    <div class="vendor-form">
+      <select id="vendors">
+        <option value="">-- Choose a vendor --</option>
+        <option value="bullcity">bullcity</option>
+        <option value="ecigexpress">ecigexpress</option>
+        <option value="chefsflavours">chefsflavours</option>
+        <option value="nicriver">nicriver</option>
+        <option value="flavourwala">flavourwala</option>
+      </select>
+      <button type="button" class="btn" onclick="goToCart()">Go to cart</button>
+    </div>
+  </div>
+</div>
+<script>
+;(function() {
+    const vendors = {
+        ecigexpress: {
+          cart: 'https://ecigexpress.com/cart',
+          flavor: 'h5.product-name a'
+        },
+        bullcity: {
+          cart: 'https://www.bullcityflavors.com/cart.php',
+          flavor: '.cart-item h4 a'
+        },
+        chefsflavours: {
+          cart: 'https://chefsflavours.co.uk/cart.php',
+          flavor: '.cart-item h4 a'
+        },
+        nicriver: {
+          cart: 'https://riversupplyco.com/cart',
+          flavor: 'h5.product-title a'
+        },
+        flavourwala: {
+          cart: 'https://www.flavourwala.com/cart/',
+          flavor: 'td.product-name a'
+        }
+    }
+  
+    function getFlavors(vendor) {
+      function openForm() {
+        document.querySelector('.choose-vendor-outer').style.display = 'block'
+      }
+
+      const vendor = Object.entries(vendors)
+        .map(v => v[0])
+        .filter(e => document.domain.includes(e))[0]
+
+      if (!vendor) {
+        openForm()
+      }
+      function goToCart() {
+        const vendor = document.getElementById('vendors').value
+        if (!vendor.length) {
+          alert('Choose a vendor from the dropdown menu')
+          return
+        }
+        console.log(vendors.vendor)
+        window.open(vendors[vendor].cart, '_blank')
+      }
+
+      function closeVendorForm() {
+        document.querySelector('.choose-vendor-outer').style = 'display:none;'
+      }
+  
+      if (!document.querySelectorAll(vendor.flavor).length) {
+        alert('You have no flavors in your cart to copy.')
+        return
+      }
+  
+      const flavors =
+        '```\n' +
+        Array.from(document.querySelectorAll(vendor.flavor))
+          .map(f => f.childNodes[0].textContent.trim())
+          .sort()
+          .join('\n')
+          .concat('\n```')
+
+      const copyToClipboard = str => {
+        const el = document.createElement('textarea')
+        el.value = str
+        document.body.appendChild(el)
+        el.select()
+        document.execCommand('copy')
+        document.body.removeChild(el)
+      }
+  
+      copyToClipboard(flavors)
+      alert('flavors have been copied to, go paste them somewhere!')
+    }
+  
+    // getFlavors(vendors.bullcity)
+  })()
+</script>
