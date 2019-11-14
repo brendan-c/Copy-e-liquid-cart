@@ -1,0 +1,28 @@
+<div class="choose-vendor-outer">
+  <span class="close" onclick="closeVendorForm()">❌</span>
+  <div class="choose-vendor-inner">
+    <label for="vendors">
+      <h3>Looks like you're not on the cart page</h3>
+      <ol>
+        <li>Choose a vendor from below</li>
+        <li>Click 'Go to cart'</li>
+        <ul>
+          <li><i>This will open the cart page in a new tab</i></li>
+        </ul>
+        <li>Run the bookmarklet again in the new tab</li>
+      </ol>
+    </label>
+    <br />
+    <div class="vendor-form">
+      <select id="vendors">
+        <option value="">-- Choose a vendor --</option>
+        <option value="bullcity">bullcity</option>
+        <option value="ecigexpress">ecigexpress</option>
+        <option value="chefsflavours">chefsflavours</option>
+        <option value="nicriver">nicriver</option>
+        <option value="flavourwala">flavourwala</option>
+      </select>
+      <button type="button" class="btn" onclick="goToCart()">Go to cart</button>
+    </div>
+  </div>
+</div>
