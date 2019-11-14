@@ -23,15 +23,29 @@
     }
   
     function getFlavors(vendor) {
-      if (!window.location.href.includes(vendor.cart)) {
-        if (
-          window.confirm(
-            'You must go to your cart first. After pressing OK, paste the script again.'
-          )
-        ) {
-          window.location.replace(vendor.cart)
+      function openForm() {
+        document.querySelector('.choose-vendor-outer').style.display = 'block'
+      }
+
+      const vendor = Object.entries(vendors)
+        .map(v => v[0])
+        .filter(e => document.domain.includes(e))[0]
+
+      if (!vendor) {
+        openForm()
+      }
+      function goToCart() {
+        const vendor = document.getElementById('vendors').value
+        if (!vendor.length) {
+          alert('Choose a vendor from the dropdown menu')
           return
         }
+        console.log(vendors.vendor)
+        window.open(vendors[vendor].cart, '_blank')
+      }
+
+      function closeVendorForm() {
+        document.querySelector('.choose-vendor-outer').style = 'display:none;'
       }
   
       if (!document.querySelectorAll(vendor.flavor).length) {
