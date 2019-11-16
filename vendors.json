@@ -18,5 +18,9 @@
         "flavourwala": {
             "cart": "https://www.flavourwala.com/cart/",
             "flavor": "td.product-name a"
+        },
+        "nomnomz":{
+            "cart": "https://nomnomz.co.uk/cart",
+            "flavor": ".list-view-item__title a"
         }
     }
